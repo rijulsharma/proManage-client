@@ -1,0 +1,166 @@
+.card{
+    background-color: white;
+    border-radius: 20px;
+    width: 100%;
+    margin-bottom: 2%;
+    padding: 2% 5% 5%;
+
+}
+.card-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 0.5%;   
+    position: relative;
+     
+}
+.card-row p{
+    font-size: medium;
+    font-family: 'Inter', sans-serif;
+}
+.card-row img{
+    cursor: pointer;
+}
+.collapse-button{
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.collapse-button.rotated {
+    transform: rotate(180deg) scaleY(-1);
+  }
+.card-row.listbox{
+    flex-direction: column;
+    height: auto;
+    margin-bottom: 5%;
+}
+.card-row.listbox.share{
+    height: auto;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0 2% 0 1%;
+      
+}
+@media (max-width: 768px) {
+    .card-row.listbox.share {
+      max-height: 500px;
+    }
+    .card{
+        width: 90%;
+        border: #EDF5FE 2px solid;
+        border-radius: 12px;
+    }
+}
+.card-row.h4{
+    width: 250px;
+    margin-bottom: 0%;
+    
+    
+}
+.card-row.h4 h4{
+    
+    font-size: 1.3rem;
+    font-family: 'Poppins', sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 0.4em; 
+    margin-bottom: 0.4em; 
+    
+}
+
+.card-priority{
+    width: 55%;
+  
+}
+.card-priority p{
+    font-size:x-small;
+    color: #707070;
+    margin-left: 5%;
+}
+.bullet-point{
+    color: #FF2473;
+    font-size: 200%;
+    margin-left: 2%;
+    
+}
+.bullet-point.m{
+    color: #18B0FF;
+}
+.bullet-point.l{
+color: #63C05B;
+}
+.card-priority{
+    display: flex;
+    align-items: center;
+}
+.due-date-btn{
+    background-color: #CF3636;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 8px;
+    font-size: x-small !important;
+    width: 25%;
+    min-height: 30px;
+    text-align: center;
+    cursor: default;
+    font-family: 'Poppins', sans-serif;
+}
+.due-date-btn.done{
+    background-color: #63C05B;
+}
+.due-date-btn.due{
+    background-color: #DBDBDB;
+    color: #5A5A5A;
+}
+.section-btns{
+    width: 65%;
+    display: flex;
+    justify-content: flex-end;
+}
+.section-btns-alt{
+    width: 70%;
+    display: flex;
+    justify-content: flex-end;
+}
+.section-btn{
+    background-color: #EEECEC;
+    color: #767575;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    margin-left: 2%;
+    min-height: 30px;
+    padding: 3%;
+    font-size: x-small;
+    font-family: 'Poppins', sans-serif;
+    
+}
+.card-row.btn{
+    min-height: 20%;
+    width: 100%;
+    border: none;
+    margin-left: 0;
+    flex-wrap: wrap;
+}
+.card-row.btn-alt{
+    min-height: 20%;
+    width: 100%;
+    border: none;
+    margin-left: 0;
+    justify-content: flex-end;
+    font-size: x-small;
+}
+.share-dueDate{
+    display: flex;
+    height: 30px;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: medium;
+}
+.share-dueDate p{
+    margin-right: 20px;
+}

@@ -1,0 +1,58 @@
+.board{
+    width: 100%;
+    height: 100%;
+}
+.board-main-row{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 2%;
+    align-items:center;
+    font-family: 'Poppins',sans-serif;
+    position: relative;
+}
+.board-main-row h2{
+    font-size: 1.6rem;
+}
+
+.board-main-row.sec{
+    padding: 3.2% 0.1%;
+    justify-content: flex-start;
+    overflow-y: auto;
+  
+}
+.board-main-row.sec::-webkit-scrollbar {
+    height: 10px; 
+    width: 8px;
+   
+}
+
+.board-main-row.sec::-webkit-scrollbar-track {
+    background: white; 
+}
+
+.board-main-row.sec::-webkit-scrollbar-thumb {
+    background: #9CB7C5;
+    border-radius: 5px; 
+}
+
+.board-main-row.sec::-webkit-scrollbar-thumb:hover {
+    background: #9CB7C5; 
+}
+.board-period{
+    display: flex;
+    align-items: center;
+    width: 10%;
+    justify-content: flex-end;
+    cursor: pointer;
+
+}
+.board-period h4{
+    margin-right: 5%;
+    color: #000000;
+    font-weight: 200;
+    font-size: medium;
+    white-space: nowrap;
+}
+.board-period img{
+    height: 5%;   
+}

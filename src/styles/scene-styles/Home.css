@@ -1,0 +1,35 @@
+body{
+    
+}
+.home{
+    display: flex;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+  }
+
+.home-main{
+  width: 85%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* background-color: red; */
+}
+.home-title-row{
+  margin-left: 2%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 0.8em;
+  
+  margin-right: 2%;
+}
+.home-title-row.b{
+display: flex;
+  justify-content: space-between;
+  font-family: 'Poppins', sans-serif;
+}
+.home-title-row.b p{
+  color: #707070;
+  font-size: 1.1rem;
+}
+.home-title-row.b h2{
+  font-size: 1.2rem;
+}

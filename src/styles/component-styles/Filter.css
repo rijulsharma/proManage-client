@@ -1,0 +1,27 @@
+.filter{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    top:  65%;
+    right: 1%;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 0 10px 5px rgba(126, 122, 122, 0.25);
+    width: 150px;
+    padding: 0.5%;
+    height: 100px;
+    z-index: 9999;
+
+}
+.filter.menu{
+    top: 64% !important;
+    right: 0%;   
+}
+.filter p{
+    cursor: pointer;
+    margin: 5px 0; 
+    margin-left: 10%;
+    font-size: 0.9rem;
+}

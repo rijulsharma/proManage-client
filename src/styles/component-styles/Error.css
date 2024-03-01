@@ -1,0 +1,14 @@
+.error-message{
+    color: #DB371F;
+    text-align: left;
+    font-size: small;
+    margin-left: 2%;
+    font-family: 'Inter', sans-serif;
+}
+.error-message.main{
+    text-align: center;
+    font-size: medium;
+}
+.error-message.main.success{
+    color: green;
+}
