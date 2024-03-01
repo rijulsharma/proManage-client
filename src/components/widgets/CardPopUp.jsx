@@ -98,19 +98,18 @@ function CardPopUp({ handleClose, cardInfo }) {
           updateSection(sectionApiMap.get(cardInfo.section));
         }
         else{
-          console.log("couldnt edit due to som error");
+          console.log("Couldn't edit due to some error");
         }
       }
       else{
-        console.log("I'm creating a new card");
+        console.log("Creating a new card");
         let response = await addCard();
         if(response.ok){
           response = await response.json();
           updateSection("todo");
-          console.log(response);
         }
         else{
-          console.log("couldnt add due to som error");
+          console.log("Couldn't add due to some error");
         }
       }
       

@@ -13,9 +13,6 @@ function TaskList({checklistNumber ,canEdit, isShare , cardItem, data, done, set
   const { loginInfo } = useContext(LoginContext);
 
   let key = checklistNumber;
-  console.log(key);
-
-
   const { checklist, setChecklist, updateSection } = useContext(CardDetailsContext);
   const [isChecked, setIsChecked] = useState(false);
 
@@ -33,8 +30,6 @@ function TaskList({checklistNumber ,canEdit, isShare , cardItem, data, done, set
       };
 
       const url = `${process.env.REACT_APP_API_BASE_URL}/task/edit`;
-      console.log(url);
-
       let response = await fetch(
         url, {
           method: 'PATCH',
@@ -74,8 +69,6 @@ function TaskList({checklistNumber ,canEdit, isShare , cardItem, data, done, set
     }
     setChecklist(checklist.map((item, i) => (i === key ? tempItem : item)));
   };
-  console.log("inside element");
-
        
   return (
     <div className={canEdit ? 'taskList' : 'taskList card'}>

@@ -11,7 +11,7 @@ function Field({ icon, view, type, placeholder,value,onChange }) {
     <div className='field'>
       <img className='field-icon' src={icon} alt='icon' />
       <input
-        type={showPassword ? 'text' : type} // Toggle input type between 'text' and 'password'
+        type={showPassword ? 'text' : type}
         placeholder={placeholder}
         value={value}
         onChange={onChange}
@@ -20,8 +20,8 @@ function Field({ icon, view, type, placeholder,value,onChange }) {
         className='field-view'
         src={view}
         alt=''
-        onClick={togglePasswordVisibility} // Call togglePasswordVisibility function on click
-        style={{ cursor: 'pointer' }} // Ensure the cursor changes on hover
+        onClick={togglePasswordVisibility} 
+        style={{ cursor: 'pointer' }}
       />
     </div>
   );

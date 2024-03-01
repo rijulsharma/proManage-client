@@ -21,14 +21,12 @@ function SharePage() {
         });
         if(response.ok){
           response = await response.json();
-          setData(response)
-          console.log(response);
+          setData(response);
         }
         else{
-          console.log(`could not find shared data`);
+          console.log(`Could not find shared data`);
         }
       }catch(err){
-        console.log(`shared error`);
       }
     }
     updateSection()

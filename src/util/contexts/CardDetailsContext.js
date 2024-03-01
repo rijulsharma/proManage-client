@@ -34,11 +34,8 @@ export const CardDetailsProvider = ({ children }) => {
         else if(section === "todo")setTodoData(data);
         else if(section === "done")setDoneData(data);
       }
-      else{
-        console.log(` ${section} pull didnt work`);
-      }
     }catch(err){
-      console.log(`${section} error`);
+      console.log(`${section} Error`)
     }
   }
 

@@ -164,3 +164,17 @@ color: #63C05B;
 .share-dueDate p{
     margin-right: 20px;
 }
+.p-share{
+    font-size: medium !important;
+    font-family: 'Inter', sans-serif;
+    font-weight: 200;
+    
+}
+.card-row-h2{
+    margin-top: -5% !important;
+    
+}
+.card-row-h2 h1{
+    font-weight: 500 !important;
+    font-size: 2rem;
+}

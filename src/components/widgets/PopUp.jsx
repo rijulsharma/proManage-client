@@ -42,12 +42,6 @@ function PopUp({ PopUpText, handleClose, deleteTask }) {
             body: JSON.stringify({ _id: deleteTask.id})
           }
         );
-        if(deleteResponse.ok){
-          console.log(`deleted ${deleteTask.id}`);
-        }
-        else{
-          console.log("couldnt delete somehow");
-        }
         updateSection(sectionApiMap.get(deleteTask.section));
         setShowDeletePopup(false);
         setDeleteTaskId(null);

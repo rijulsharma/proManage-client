@@ -33,7 +33,6 @@ function Filter({ text1, text2, text3, onSelectPeriod, notify }) {
     const handleClickOutside = (event) => {
       if (filterRef.current && !filterRef.current.contains(event.target)) {
         setIsOpen(false);
-        console.log('Clicked outside the Filter component');
       }
     };
 

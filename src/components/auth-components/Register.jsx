@@ -57,6 +57,15 @@ function Register() {
       return;
     }
 
+    if (/[^a-zA-Z\s]/.test(name)) {
+      setNameError('Name cant have numbers or special characters');
+      return;
+    }
+    if( /(^\s)|(\s$)/.test(name) ){
+      setNameError('Name cannto start or end with spaces');
+      return;
+    }
+
     if (!email) {
       setEmailError('Please enter your email.');
       return;

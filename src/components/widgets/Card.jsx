@@ -61,7 +61,6 @@ function Card({ item, collapseAll, isShare,notify, setCollapseAll }) {
   const handleShareItem = async (itemData) => {
 
     if (!(itemData.shareId)) {
-      
       const randomString = Math.floor(Math.random() * 10000).toString();
       const payload = {
         shareId: randomString,
@@ -141,7 +140,6 @@ function Card({ item, collapseAll, isShare,notify, setCollapseAll }) {
       }
     );
     if(response.ok){
-      console.log("change section worked !!!! did work !")
       updateSection(sectionApiMap.get(item.section));
       updateSection(sectionApiMap.get(sectionDBMap.get(section)));
     }
@@ -175,11 +173,20 @@ function Card({ item, collapseAll, isShare,notify, setCollapseAll }) {
           </>
         )}
       </div>
-      <div className="card-row h4"><h4>{item.title}</h4></div>
+      {isShare ? (
+        <div className="card-row-h2"><h1>{item.title}</h1></div>
+        ) : (
+        <div className="card-row h4"><h4>{item.title}</h4></div>
+      )}
+
       
       
       <div className="card-row">
-        <p>Checklist ({doneItemsTasks}/{totalItemsTasks})</p>
+        {isShare ? (
+          <p className="p-share">Checklist ({doneItemsTasks}/{totalItemsTasks})</p>
+          ) : (
+          <p>Checklist ({doneItemsTasks}/{totalItemsTasks})</p>
+        )}
         {!isShare && (<img
           src={isCollapsed ? uncollapse : collapse}
           alt="collapse"
@@ -188,14 +195,14 @@ function Card({ item, collapseAll, isShare,notify, setCollapseAll }) {
         />)}
       </div>
       {isListboxVisible && (
-  <div className={isShare ? "card-row listbox share" : "card-row listbox"}>
-    {item.checklist.map((data , index, array) => (
-        <TaskList canEdit={false} isShare={isShare} data={data} checklistNumber={index} cardItem={item} />
-      ))}
-  </div>
-)}
-     
-     {!isShare && ( <div className={`card-row btn ${!item.isDue  ? 'card-row btn-alt' : ''}`}>
+        <div className={isShare ? "card-row listbox share" : "card-row listbox"}>
+          {item.checklist.map((data , index, array) => (
+            <TaskList canEdit={false} isShare={isShare} data={data} checklistNumber={index} cardItem={item} />
+          ))}
+        </div>
+      )}
+    
+    {!isShare && ( <div className={`card-row btn ${!item.isDue  ? 'card-row btn-alt' : ''}`}>
       
       {item.isDue && (
     <div className={`due-date-btn ${currentSection === 'DONE' ? 'done' : (new Date(item.dueDate).toDateString() === new Date().toDateString() ? 'due' : '')}`}>
@@ -213,12 +220,12 @@ function Card({ item, collapseAll, isShare,notify, setCollapseAll }) {
     </div>
   
 </div>)}
-{isShare && formatDate(item.dueDate) && (
-  <div className="share-dueDate">
-    <p>Due Date</p>
-    <div className="due-date-btn">{formatDate(item.dueDate)} </div>
-  </div>
-)}
+      {isShare && formatDate(item.dueDate) && (
+        <div className="share-dueDate">
+          <p>Due Date</p>
+          <div className="due-date-btn">{formatDate(item.dueDate)} </div>
+        </div>
+      )}
 
     </div>
   );
