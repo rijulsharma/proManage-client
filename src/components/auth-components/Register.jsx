@@ -9,7 +9,7 @@ import { Link,useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import '../../styles/component-styles/Error.css'
 
-function Register({ handleRegister }) {
+function Register() {
  
   const navigate = useNavigate();
   const [name, setName] = useState('');
@@ -19,17 +19,41 @@ function Register({ handleRegister }) {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
+  const [nameError, setNameError] = useState('');
   const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+
+  const handleRegister = async (formData) => {
+
+    const payload = {
+      name: formData.name,
+      email: formData.email,
+      password: formData.password
+    };
+    const url = `${process.env.REACT_APP_API_BASE_URL}/auth/register`;
+    const savedUserResponse = await fetch(
+      url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      }
+    );
+    return savedUserResponse;
+
+  };
+
+
+  const handleSubmit = async(e) => {
     e.preventDefault();
     setEmailError('');
     setPasswordError('');
     setConfirmPasswordError('');
-    setError('');
+    setNameError('');
 
     if (!name) {
-      setError('Please enter your name.');
+      setNameError('Please enter your name.');
       return;
     }
 
@@ -64,11 +88,12 @@ function Register({ handleRegister }) {
       return;
     }
 
-    const success = handleRegister({ name, email, password });
-    if (success) {
+    const savedUserResponse = await handleRegister({ name, email, password });
+    if (savedUserResponse.ok) {
       navigate("/");
     } else {
-      setError('Something went wrong.');
+      let response = await savedUserResponse.json();
+      setError(response.msg);
     }
   };
 
@@ -83,7 +108,7 @@ function Register({ handleRegister }) {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
-          {error && <p className="error-message">{error}</p>}
+          {nameError && <p className="error-message">{nameError}</p>}
           <Field
             type="email"
             icon={mail}
@@ -115,6 +140,7 @@ function Register({ handleRegister }) {
         <p>Have an account?</p>
         <Link to="/login" className='reg-button login'>Login</Link>
       </div>
+      {error && <p className="error-message main">{error}</p>}
     </div>
   );
 }

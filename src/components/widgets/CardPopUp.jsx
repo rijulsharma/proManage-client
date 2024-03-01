@@ -49,7 +49,6 @@ function CardPopUp({ handleClose, cardInfo }) {
       dueDate: ISODueDate,
       checklist: checklist,
     };
-    console.log(payload);
 
     const url = `${process.env.REACT_APP_API_BASE_URL}/task/create`;
     const response = await fetch( url, {
@@ -77,7 +76,6 @@ function CardPopUp({ handleClose, cardInfo }) {
       dueDate: dueDate,
       checklist: checklist,
     };
-    console.log(payload);
 
     const url = `${process.env.REACT_APP_API_BASE_URL}/task/edit`;
     const response = await fetch( url, {
@@ -98,7 +96,6 @@ function CardPopUp({ handleClose, cardInfo }) {
         if(response.ok){
           response = await response.json();
           updateSection(sectionApiMap.get(cardInfo.section));
-          console.log(response);
         }
         else{
           console.log("couldnt edit due to som error");
@@ -143,7 +140,6 @@ function CardPopUp({ handleClose, cardInfo }) {
       let totalTasks=0;
       let doneTasks=0;
       for (const listTask of cardInfo.checklist) {
-        console.log(listTask);
         totalTasks++;
         if(listTask.isChecked)doneTasks++;
       }

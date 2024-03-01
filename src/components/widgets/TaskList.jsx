@@ -20,8 +20,6 @@ function TaskList({checklistNumber ,canEdit, isShare , cardItem, data, done, set
   const [isChecked, setIsChecked] = useState(false);
 
   const toggleCheckbox = async() => {
-    console.log(cardItem);
-    console.log("yaya");
     if(!canEdit && !isShare){
       
       let tempItem = {
@@ -91,12 +89,14 @@ function TaskList({checklistNumber ,canEdit, isShare , cardItem, data, done, set
           <input placeholder='Add a task' value={checklist[key].description} onChange={(e) => editItem(e.target.value)} />
         </div> : 
         <div className='task-input'>
-          { (data && data.isChecked) ? (
-            <img src={check} alt='tick' onClick={() => toggleCheckbox()} />
-          ) : (
-            <img src={uncheck} alt='untick' onClick={() => toggleCheckbox()} />
-          )}
-          <p>{data.description}</p>
+          <div className='checkbox'>
+            { (data && data.isChecked) ? (
+              <img src={check} alt='tick' onClick={() => toggleCheckbox()} />
+            ) : (
+              <img src={uncheck} alt='untick' onClick={() => toggleCheckbox()} />
+            )}
+          </div>
+          <div className='checklistItem'><p>{data.description}</p></div>
         </div>
       }
       {canEdit && (

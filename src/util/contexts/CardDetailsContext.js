@@ -28,9 +28,7 @@ export const CardDetailsProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${loginInfo.token}` },
       });
       if(response.ok){
-        console.log(` ${section} pull worked `); 
         let data = await response.json();
-        console.log(data);
         if(section === "backlog")setBacklogData(data);
         else if(section === "progress")setProgressData(data);
         else if(section === "todo")setTodoData(data);

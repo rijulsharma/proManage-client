@@ -23,7 +23,6 @@ function Settings() {
     };
 
     const url = `${process.env.REACT_APP_API_BASE_URL}/profile/update`;
-    console.log(url);
     let response = await fetch(
       url, {
         method: 'PATCH',
@@ -51,9 +50,7 @@ function Settings() {
     setNewPasswordError("");
     setSuccessMessage("");
 
-    console.log(newPassword);
     if(newPassword){
-      console.log("new pass hit");
       if (!oldPassword) {
         setNewPasswordError('Please enter current password');
         return;
@@ -91,15 +88,12 @@ function Settings() {
     const response = await handleUserUpdate({ name, oldPassword, newPassword });
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
       setSuccessMessage(data.msg);
       setLoginInfo(loginInfo => ({
         ...loginInfo,
         user: data.user,
       }));
-      console.log(data.user);
       localStorage.setItem('LoginInfo', JSON.stringify({user: data.user, token: loginInfo.token}));
-      console.log("my melo");
     } else {
       setNewPasswordError('Old password entered is incorrect');
     }

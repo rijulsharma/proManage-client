@@ -1,5 +1,5 @@
 .error-message{
-    color: #DB371F;
+    color: #DB371F !important;
     text-align: left;
     font-size: small;
     margin-left: 2%;
@@ -10,5 +10,5 @@
     font-size: medium;
 }
 .error-message.main.success{
-    color: green;
+    color: green !important;
 }

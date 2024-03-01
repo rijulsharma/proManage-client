@@ -32,7 +32,6 @@ function PopUp({ PopUpText, handleClose, deleteTask }) {
     else if(PopUpText === "delete"){
       if(value === true ){
         const url = `${process.env.REACT_APP_API_BASE_URL}/task/delete`;
-        console.log(url);
         let deleteResponse = await fetch(
           url, {
             method: 'DELETE',

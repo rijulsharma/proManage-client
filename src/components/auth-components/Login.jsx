@@ -8,7 +8,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState, useContext, useEffect } from 'react'
 import { LoginContext } from  '../../util/contexts/LoginContexts'
 
-function Login({ handleLogin }) {
+function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -18,6 +18,26 @@ function Login({ handleLogin }) {
   const { loginInfo, setLoginInfo } = useContext(LoginContext);
 
 
+  const handleLogin = async (formData) => {
+
+    const payload = {
+      email: formData.email,
+      password: formData.password
+    };
+    const url = `${process.env.REACT_APP_API_BASE_URL}/auth/login`;
+    let loginResponse = await fetch(
+      url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      }
+    );
+    return loginResponse;
+    
+  };
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');

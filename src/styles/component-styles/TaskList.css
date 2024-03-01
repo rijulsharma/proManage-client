@@ -12,16 +12,15 @@
     padding: 1%;
 }
 .task-input p{
-    line-height: 0;
-    font-size: small;
-    margin-left: 2%;
-    
+    font-size: medium;
+    margin: 3%;
+    margin-left: 4%;
     white-space: normal; 
     overflow-wrap: break-word;
 }
 .taskList img{
     cursor: pointer;
-    margin: 1%;
+    margin: 5px;
 }
 .task-input{
     display: flex;
@@ -34,4 +33,15 @@
     width: 100%;
     margin-left: 2%;
     outline: none;
+}
+
+.checkbox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.checklistItem{
+    width: 80%;
+    max-width: 80%;
+
 }

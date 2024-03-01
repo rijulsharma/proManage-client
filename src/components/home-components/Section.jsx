@@ -11,7 +11,7 @@ function Section({title, data, handleAddCard,notify}) {
     
     setCollapseAll(true);
   }
-  console.log(data);
+  
   return (
     <div className='section'>
       <div className='section-row'>

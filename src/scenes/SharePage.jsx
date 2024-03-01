@@ -10,7 +10,6 @@ function SharePage() {
 
   const location = useLocation();
   const {shareId} = queryString.parse(location.search);
-  console.log(shareId);
   const [data, setData ] = useState(null);
 
   useEffect(() => {
@@ -21,7 +20,6 @@ function SharePage() {
           method: "GET"
         });
         if(response.ok){
-          console.log(`found shared page`); 
           response = await response.json();
           setData(response)
           console.log(response);

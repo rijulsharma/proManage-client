@@ -30,7 +30,6 @@ function Card({ item, collapseAll, isShare,notify, setCollapseAll }) {
     totalItemsTasks++;
     if(listTask.isChecked)doneItemsTasks++;
   }
-  console.log(`sugeeeee !!! ${doneItemsTasks}`);
   useEffect(() => {
     if (item.section === "To Do") {
       setCurrentSection("TO-DO");
@@ -51,7 +50,6 @@ function Card({ item, collapseAll, isShare,notify, setCollapseAll }) {
   const toggleListboxVisibility = () => {
     setIsListboxVisible(!isListboxVisible);
     setIsCollapsed(!isCollapsed);
-    console.log("nigaa");
     setCollapseAll(false);
   };
 
@@ -61,11 +59,6 @@ function Card({ item, collapseAll, isShare,notify, setCollapseAll }) {
   }
 
   const handleShareItem = async (itemData) => {
-    
-    allSections.map((ele1, index) => {
-      console.log(ele1)
-      console.log(index)
-    });
 
     if (!(itemData.shareId)) {
       
@@ -75,7 +68,6 @@ function Card({ item, collapseAll, isShare,notify, setCollapseAll }) {
         _id: itemData._id
       };
       const url = `${process.env.REACT_APP_API_BASE_URL}/task/edit`;
-      console.log(url);
       let response = await fetch(
         url, {
           method: 'PATCH',
@@ -87,14 +79,12 @@ function Card({ item, collapseAll, isShare,notify, setCollapseAll }) {
         }
       );
       if(response.ok){
-        console.log("did work !")
         let shareUrl = `${process.env.REACT_APP_SELF_BASE_URL}/share?shareId=${randomString}`
         await navigator.clipboard.writeText(shareUrl);
         updateSection(sectionApiMap.get(itemData.section));
       }
     }
     else{
-      console.log(process.env.REACT_APP_SELF_BASE_URL);
       let shareUrl = `${process.env.REACT_APP_SELF_BASE_URL}/share?shareId=${itemData.shareId}`
       await navigator.clipboard.writeText(shareUrl);
     }
@@ -120,12 +110,10 @@ function Card({ item, collapseAll, isShare,notify, setCollapseAll }) {
   };
   
   function handleMenuClick(option) {
-    console.log(option);
     if (option === "Edit") {
       handleEditItem(item);
     } else if (option === "Share") {
       handleShareItem(item);
-      
     } else if (option === "Delete") {
       handleDeleteItem(item);
     }
@@ -142,7 +130,6 @@ function Card({ item, collapseAll, isShare,notify, setCollapseAll }) {
       _id: item._id
     };
     const url = `${process.env.REACT_APP_API_BASE_URL}/task/edit`;
-    console.log(url);
     let response = await fetch(
       url, {
         method: 'PATCH',
@@ -208,10 +195,10 @@ function Card({ item, collapseAll, isShare,notify, setCollapseAll }) {
   </div>
 )}
      
-      {!isShare && ( <div className={`card-row btn ${!item.isDue  ? 'card-row btn-alt' : ''}`}>
-  
+     {!isShare && ( <div className={`card-row btn ${!item.isDue  ? 'card-row btn-alt' : ''}`}>
+      
       {item.isDue && (
-    <div className={`due-date-btn ${currentSection === 'DONE' ? 'done' : (new Date(item.dueDate) < new Date() ? '' : 'due')}`}>
+    <div className={`due-date-btn ${currentSection === 'DONE' ? 'done' : (new Date(item.dueDate).toDateString() === new Date().toDateString() ? 'due' : '')}`}>
       {formatDate(item.dueDate)}
     </div>
 )}
